@@ -1,19 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { getNews } from "@/lib/GetNews";
 import Marquee from "react-fast-marquee";
 
-const BreakingNews = () => {
-  const [breakingNews, setBreakingNews] = useState([]);
-
-  useEffect(() => {
-    fetch("/news.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const filtered = data.filter((r) => r.category_id === 2);
-        setBreakingNews(filtered);
-      });
-  }, []);
+const BreakingNews = async () => {
+  const data = await getNews();
+  const breakingNews = data.filter((r) => r.category_id === 2);
 
   return (
     <section className="bg-base-300 py-4 flex gap-2 mx-auto px-2 text-2xl font-bold">
