@@ -1,0 +1,33 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
+
+const BreakingNews = () => {
+  const [breakingNews, setBreakingNews] = useState([]);
+
+  useEffect(() => {
+    fetch("/news.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const filtered = data.filter((r) => r.category_id === 2);
+        setBreakingNews(filtered);
+      });
+  }, []);
+
+  return (
+    <section className="bg-base-300 py-4 flex gap-2 mx-auto px-2 text-2xl font-bold">
+      <button className="btn bg-red-400 text-white">Latest</button>
+
+      <Marquee pauseOnHover speed={100}>
+        <div className="flex gap-10">
+          {breakingNews.map((news) => (
+            <span key={news.id}>{news.title}</span>
+          ))}
+        </div>
+      </Marquee>
+    </section>
+  );
+};
+
+export default BreakingNews;
