@@ -21,9 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="light" className={` h-full antialiased`}>
       <body className="min-h-screen flex flex-col max-w-470 mx-auto ">
-        <main className={`${poppins.className} w-11/12 mx-auto`}>
-          {children}
-        </main>
+        <main className={`${poppins.className}`}>{children}</main>
       </body>
     </html>
   );

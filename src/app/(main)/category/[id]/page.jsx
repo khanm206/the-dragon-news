@@ -8,7 +8,7 @@ const NewsByCategory = async ({ params }) => {
   const categoryId = paramsId.id;
   const news = await getNews({ category: `${categoryId}`, revalidate: 60 });
   return (
-    <section className="grid grid-cols-5 gap-6 mt-10">
+    <section className="grid lg:grid-cols-5 md:grid-cols-3 gap-6 mt-10">
       <AllCategory categoryId={categoryId} />
       <NewsHome news={news} />
       <SocialLogin />

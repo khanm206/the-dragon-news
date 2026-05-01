@@ -7,9 +7,10 @@ import {
   BsStarFill,
 } from "react-icons/bs";
 import userIcon from "@/assets/user.png";
+import Link from "next/link";
 
 const NewsCard = ({ res }) => {
-  const { title, author, image_url, details, rating, total_view } = res;
+  const { _id, title, author, image_url, details, rating, total_view } = res;
   const { name, published_date, img } = author;
   const { number } = rating;
   return (
@@ -55,9 +56,11 @@ const NewsCard = ({ res }) => {
         <br />
         <br />
         <p className="line-clamp-4 text-black/80">{details}</p>
-        <button className="text-orange-600 mt-2 mb-4 hover:cursor-pointer">
-          Read More
-        </button>
+        <Link href={`/news/${_id}`}>
+          <button className="text-orange-600 mt-2 mb-4 hover:cursor-pointer">
+            Read More
+          </button>
+        </Link>
 
         <hr className="text-black/20" />
 

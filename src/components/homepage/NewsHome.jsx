@@ -2,7 +2,7 @@ import NewsCard from "./NewsCard";
 
 const NewsHome = ({ news }) => {
   return (
-    <div className="col-span-3">
+    <div className="lg:col-span-3 md:col-span-2">
       <h1 className="text-2xl font-semibold">Dragon News Home</h1>
       <div className="space-y-10 my-6">
         {news.length === 0 ? (
