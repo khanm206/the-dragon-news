@@ -12,6 +12,8 @@ export const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
+import dns from "node:dns";
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 export const metadata = {
   title: "The Dragon News",
   description: "Latest News Everyday",
