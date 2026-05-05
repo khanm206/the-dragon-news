@@ -11,9 +11,9 @@ const NavBar = () => {
   const user = session?.user;
   const router = useRouter();
   return (
-    <div className="flex items-center justify-between my-6 text-lg font-semibold w-11/12 mx-auto">
+    <div className="flex items-center justify-between my-6 md:text-lg font-semibold w-11/12 mx-auto">
       <div className="hidden md:flex"></div>
-      <ul className="flex gap-6 text-black/50 text-xl">
+      <ul className="flex gap-6 text-black/50 text-sm md:text-xl">
         <li>
           <NavLink href={"/"}>Home </NavLink>
         </li>
@@ -28,7 +28,7 @@ const NavBar = () => {
         "Loading..."
       ) : user ? (
         <div className="flex items-center gap-4">
-          <h2>Hello, {user.name}</h2>
+          <h2 className="text-sm md:text-xl">Hello, {user.name}</h2>
           <Image
             src={user.image || avatar}
             alt="avatar"
@@ -40,13 +40,13 @@ const NavBar = () => {
               await authClient.signOut();
               router.refresh();
             }}
-            className="btn bg-base-300"
+            className="btn bg-base-300 btn-sm md:btn-md"
           >
             Logout
           </button>
         </div>
       ) : (
-        <button className="btn bg-base-300">
+        <button className="btn bg-base-300 btn-sm md:btn-md">
           <Link href={"/login"}>Login</Link>
         </button>
       )}

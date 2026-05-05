@@ -36,30 +36,36 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit(handleRegister)}>
       <fieldset className="fieldset md:w-2xl">
-        <label className="text-2xl font-semibold mb-2">Your Name</label>
+        <label className="text-lg md:text-2xl font-semibold mb-2">
+          Your Name
+        </label>
         <input
           type="text"
           {...register("name", { required: "Name is required" })}
-          className="w-full bg-base-200 p-6 rounded text-xl"
+          className="w-full bg-base-200 p-4 md:p-6 rounded md:text-xl"
           placeholder="Enter your full name"
         />
         {errors.name && (
           <p className="text-sm text-red-500">{errors.name.message}</p>
         )}
         <br />
-        <label className="text-2xl font-semibold mb-2">Your Photo</label>
+        <label className="text-lg md:text-2xl font-semibold mb-2">
+          Your Photo
+        </label>
         <input
           type="text"
           {...register("photo")}
-          className="w-full bg-base-200 p-6 rounded text-xl"
+          className="w-full bg-base-200 p-4 md:p-6 rounded md:text-xl"
           placeholder="Enter your photo url"
         />
         <br />
-        <label className="text-2xl font-semibold mb-2">Email address</label>
+        <label className="text-lg md:text-2xl font-semibold mb-2">
+          Email address
+        </label>
         <input
           type="email"
           {...register("email", { required: "Email is required" })}
-          className="w-full bg-base-200 p-6 rounded text-xl"
+          className="w-full bg-base-200 p-4 md:p-6 rounded md:text-xl"
           placeholder="Enter your email address"
         />
         {errors.email && (
@@ -67,13 +73,15 @@ const RegisterForm = () => {
         )}
         <br />
         <fieldset className="relative fieldset">
-          <label className="text-2xl font-semibold mb-2">Password</label>
+          <label className="text-lg md:text-2xl font-semibold mb-2">
+            Password
+          </label>
 
           <input
             type={showPass ? "text" : "password"}
             {...register("password", { required: "Password is required" })}
             autoComplete="current-password"
-            className="w-full bg-base-200 p-6 rounded text-xl"
+            className="w-full bg-base-200 p-4 md:p-6 rounded md:text-xl"
             placeholder="Enter your password"
           />
           <span
@@ -87,7 +95,9 @@ const RegisterForm = () => {
           )}
         </fieldset>
         <br />
-        <button className="btn btn-neutral mt-4 text-2xl p-8">Register</button>
+        <button className="btn btn-neutral mt-4 md:text-2xl md:p-8">
+          Register
+        </button>
       </fieldset>
     </form>
   );

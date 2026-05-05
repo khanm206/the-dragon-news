@@ -6,9 +6,9 @@ const NewsDetailsCard = ({ newsDetails }) => {
   const { title, image_url, details, category_id } = newsDetails;
   return (
     <div className="w-10/12 mx-auto">
-      <h1 className="text-2xl font-semibold">Dragon News</h1>
+      <h1 className="text-xl md:text-2xl  font-semibold">Dragon News</h1>
 
-      <div className="space-y-4 mt-6 border p-8 rounded border-black/20">
+      <div className="space-y-4 mt-6 border p-4 md:p-8 rounded border-black/20">
         <Image
           src={image_url}
           alt="thumbnail image"

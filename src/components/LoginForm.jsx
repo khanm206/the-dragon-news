@@ -39,14 +39,16 @@ const LoginForm = () => {
   };
 
   return (
-    <section>
+    <section className="">
       <form onSubmit={handleSubmit(handleLogin)}>
         <fieldset className="fieldset md:w-2xl">
-          <label className="text-2xl font-semibold mb-4">Email address</label>
+          <label className="text-lg md:text-2xl font-semibold mb-4">
+            Email address
+          </label>
           <input
             type="email"
             {...register("email", { required: "Email is required" })}
-            className="w-full bg-base-200 p-6 rounded text-xl"
+            className="w-full bg-base-200 p-4 md:p-6 rounded md:text-xl"
             placeholder="Enter your email address"
           />
           {errors.email && (
@@ -54,12 +56,14 @@ const LoginForm = () => {
           )}
           <br />
           <fieldset className="relative fieldset">
-            <label className="text-2xl font-semibold mb-4">Password</label>
+            <label className="text-lg md:text-2xl font-semibold mb-4">
+              Password
+            </label>
             <input
               type={showPass ? "text" : "password"}
               {...register("password", { required: "Password is required" })}
               autoComplete="current-password"
-              className="w-full bg-base-200 p-6 rounded text-xl"
+              className="w-full bg-base-200 p-4 md:p-6 rounded md:text-xl"
               placeholder="Enter your password"
             />
             <span
@@ -74,30 +78,34 @@ const LoginForm = () => {
           </fieldset>
 
           <br />
-          <button className="btn btn-neutral mt-4 text-2xl p-8">Login</button>
+          <button className="btn btn-neutral mt-4 md:text-2xl md:p-8">
+            Login
+          </button>
         </fieldset>
       </form>
 
       <div className="flex flex-col gap-4 mt-4">
         <button
           onClick={handleGoogleSignin}
-          className="btn flex items-center gap-2 border-2 rounded-md border-sky-600 text-sky-600 text-2xl p-6"
+          className="btn flex items-center gap-2 border-2 rounded-md border-sky-600 text-sky-600 md:text-2xl p-6"
         >
           <FcGoogle /> Login with Google
         </button>
         <button
           onClick={handleGitHubSignin}
-          className="btn flex items-center gap-2  border-2 border-black text-2xl p-6"
+          className="btn flex items-center gap-2  border-2 border-black md:text-2xl p-6"
         >
           <FaGithub /> Login with GitHub
         </button>
       </div>
 
       <div className="flex gap-2 items-center justify-center mt-8">
-        <p className="text-xl font-semibold">Don't Have An Account ?</p>
+        <p className="text-sm md:text-xl font-semibold">
+          Don't Have An Account ?
+        </p>
         <Link
           href={"/register"}
-          className="text-xl font-semibold text-red-600 hover:cursor-pointer"
+          className="text-sm md:text-xl font-semibold text-red-600 hover:cursor-pointer"
         >
           Register
         </Link>

@@ -20,7 +20,7 @@ const SocialLogin = () => {
   return (
     <section className={user ? "hidden" : ""}>
       <div className="space-y-4 sticky top-52 z-10 bg-base-100">
-        <h1 className="text-2xl font-semibold">Login With</h1>
+        <h1 className="text-xl md:text-2xl  font-semibold">Login With</h1>
         <div className="flex flex-col gap-2 my-6">
           <button
             onClick={handleGoogleSignin}
