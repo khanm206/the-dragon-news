@@ -5,7 +5,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 const NewsDetailsCard = ({ newsDetails }) => {
   const { title, image_url, details, category_id } = newsDetails;
   return (
-    <div className="lg:col-span-4 md:col-span-2">
+    <div className="w-10/12 mx-auto">
       <h1 className="text-2xl font-semibold">Dragon News</h1>
 
       <div className="space-y-4 mt-6 border p-8 rounded border-black/20">

@@ -1,5 +1,6 @@
 import SocialLogin from "@/components/homepage/SocialLogin";
 import NewsDetailsCard from "@/components/NewsDetailsCard";
+
 import GetNewsDetails from "@/lib/GetNewsDetails";
 
 const NewsDetailsPage = async ({ params }) => {
@@ -7,9 +8,8 @@ const NewsDetailsPage = async ({ params }) => {
   const newsDetails = await GetNewsDetails({ id: id });
 
   return (
-    <section className="grid lg:grid-cols-5 md:grid-cols-3 gap-4">
+    <section className="">
       <NewsDetailsCard newsDetails={newsDetails} />
-      <SocialLogin />
     </section>
   );
 };

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-black/80 text-primary-content p-10 mt-18">
+    <footer className="footer footer-horizontal footer-center bg-black/65 text-primary-content p-10 mt-18">
       <aside>
         <Image src={icon} alt="icon" width={200} className="-mb-8" />
         <p className="font-bold text-2xl">The Dragon News Ltd.</p>

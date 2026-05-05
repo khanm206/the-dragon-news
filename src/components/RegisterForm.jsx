@@ -1,9 +1,31 @@
 "use client";
-import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const RegisterForm = () => {
-  const handleRegister = (data) => {};
+  const [showPass, setShowPass] = useState(false);
+  const router = useRouter();
+  const handleRegister = async (data) => {
+    const { name, email, photo, password } = data;
+    const { data: res, error } = await authClient.signUp.email({
+      name: name,
+      email: email,
+      password: password,
+      image: photo,
+      callbackURL: "/",
+    });
+    if (error) {
+      alert(error.message);
+    }
+    if (res) {
+      alert(`${name} is successfully registered`);
+      router.push("/");
+    }
+  };
 
   const {
     register,
@@ -13,12 +35,11 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleRegister)}>
-      <fieldset className="fieldset w-2xl">
-        <label className="text-2xl font-semibold mb-4">Your Name</label>
+      <fieldset className="fieldset md:w-2xl">
+        <label className="text-2xl font-semibold mb-2">Your Name</label>
         <input
           type="text"
           {...register("name", { required: "Name is required" })}
-          autoComplete="current-password"
           className="w-full bg-base-200 p-6 rounded text-xl"
           placeholder="Enter your full name"
         />
@@ -26,11 +47,18 @@ const RegisterForm = () => {
           <p className="text-sm text-red-500">{errors.name.message}</p>
         )}
         <br />
-        <label className="text-2xl font-semibold mb-4">Email address</label>
+        <label className="text-2xl font-semibold mb-2">Your Photo</label>
+        <input
+          type="text"
+          {...register("photo")}
+          className="w-full bg-base-200 p-6 rounded text-xl"
+          placeholder="Enter your photo url"
+        />
+        <br />
+        <label className="text-2xl font-semibold mb-2">Email address</label>
         <input
           type="email"
           {...register("email", { required: "Email is required" })}
-          autoComplete="current-password"
           className="w-full bg-base-200 p-6 rounded text-xl"
           placeholder="Enter your email address"
         />
@@ -38,17 +66,26 @@ const RegisterForm = () => {
           <p className="text-sm text-red-500">{errors.email.message}</p>
         )}
         <br />
-        <label className="text-2xl font-semibold mb-4">Password*</label>
-        <input
-          type="password"
-          {...register("password", { required: "Password is required" })}
-          autoComplete="current-password"
-          className="w-full bg-base-200 p-6 rounded text-xl"
-          placeholder="Enter your password"
-        />
-        {errors.password && (
-          <p className="text-sm text-red-500">{errors.password.message}</p>
-        )}
+        <fieldset className="relative fieldset">
+          <label className="text-2xl font-semibold mb-2">Password</label>
+
+          <input
+            type={showPass ? "text" : "password"}
+            {...register("password", { required: "Password is required" })}
+            autoComplete="current-password"
+            className="w-full bg-base-200 p-6 rounded text-xl"
+            placeholder="Enter your password"
+          />
+          <span
+            className="absolute top-[60%] right-[4%] hover:cursor-pointer"
+            onClick={() => setShowPass(!showPass)}
+          >
+            {showPass ? <FaEyeSlash size={22} /> : <FaEye size={20} />}
+          </span>
+          {errors.password && (
+            <p className="text-sm text-red-500">{errors.password.message}</p>
+          )}
+        </fieldset>
         <br />
         <button className="btn btn-neutral mt-4 text-2xl p-8">Register</button>
       </fieldset>
